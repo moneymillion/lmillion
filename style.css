@@ -1,0 +1,99 @@
+/* Importing a font similar to Apple's San Francisco for a clean look */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+.hidden {
+    display: none;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-weight: 600;
+    margin: 0;
+}
+
+#input-section, #duration-selection {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+.input-field, .results-container {
+    margin: 10px 0;
+}
+
+label {
+    width: 240px;
+    margin-right: 10px;
+}
+
+input[type=number], button {
+    width: calc(100% - 250px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #005ecb;
+}
+
+.results-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.results-section {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+h3 {
+    margin-top: 0;
+}
