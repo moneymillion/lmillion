@@ -12,26 +12,27 @@
     </header>
     <section id="input-section">
         <form id="input-form">
-          <div class="input-field">
-            <label for="starting-balance">Starting Balance:</label>
-            <input type="number" id="starting-balance" name="starting-balance" required>
-          </div>
-          <div class="input-field">
-            <label for="min-compound">Minimum Compound Percentage (%):</label>
-            <input type="number" id="min-compound" name="min-compound" required>
-          </div>
-          <div class="input-field">
-            <label for="max-compound">Maximum Compound Percentage (%):</label>
-            <input type="number" id="max-compound" name="max-compound" required>
-          </div>
-            <button type="submit">Calculate</button>
+            <div class="input-field">
+                <label for="starting-balance">Starting Balance:</label>
+                <input type="number" id="starting-balance" name="starting-balance" required>
+            </div>
+            <div class="input-field">
+                <label for="min-compound">Minimum Compound Percentage (%):</label>
+                <input type="number" id="min-compound" name="min-compound" required>
+            </div>
+            <div class="input-field">
+                <label for="max-compound">Maximum Compound Percentage (%):</label>
+                <input type="number" id="max-compound" name="max-compound" required>
+            </div>
+            <button type="submit" class="primary">Calculate</button>
         </form>
     </section>
     <section id="duration-selection" class="hidden">
-        <button id="btn-12m">12 Months</button>
-        <button id="btn-24m">24 Months</button>
-        <button id="btn-36m">36 Months</button>
+        <button id="btn-12m" class="duration-btn secondary">12 Months</button>
+        <button id="btn-24m" class="duration-btn secondary">24 Months</button>
+        <button id="btn-36m" class="duration-btn secondary">36 Months</button>
     </section>
+
     <div class="results-container">
         <section id="results-12m" class="results-section hidden">
             <h3>12 Months Results</h3>
@@ -46,6 +47,17 @@
             <table id="table-36m"></table>
         </section>
     </div>
+    <!-- Centered supplement question section -->
+    <section id="supplement-question" class="hidden center-content">
+        <div class="supplement-container">
+            <p>Do you wish to add a supplement amount in the 1st 4 months?</p>
+            <div class="supplement-buttons">
+                <button id="supplement-yes" class="secondary">Yes</button>
+                <button id="supplement-no" class="secondary">No</button>
+            </div>
+        </div>
+    </section>
+    
     <script src="script.js"></script>
 </body>
 </html>

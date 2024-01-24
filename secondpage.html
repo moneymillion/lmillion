@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Compound Interest Calculator</h1>
+    </header>
+
+    <div id="input-section">
+        <h2>Enter Details</h2>
+        <form id="input-form">
+            <div class="input-field">
+                <label for="starting-balance">Starting Balance:</label>
+                <input type="number" id="starting-balance" required>
+            </div>
+            <div class="input-field">
+                <label for="supplement-amount">Supplement Amount:</label>
+                <input type="number" id="supplement-amount" required>
+            </div>
+            <div class="input-field">
+                <label for="min-compound">Minimum Compound Percentage (%):</label>
+                <input type="number" id="min-compound" required>
+            </div>
+            <div class="input-field">
+                <label for="max-compound">Maximum Compound Percentage (%):</label>
+                <input type="number" id="max-compound" required>
+            </div>
+            <button type="submit" class="primary">Calculate</button>
+        </form>
+    </div>
+
+    <div id="duration-selection" class="hidden">
+        <h2>Select Duration</h2>
+        <div class="input-field">
+            <button id="btn-12m" class="secondary">12 Months</button>
+            <button id="btn-24m" class="secondary">24 Months</button>
+            <button id="btn-36m" class="secondary">36 Months</button>
+        </div>
+    </div>
+
+    <!-- Result Tables -->
+    <div id="results-12m" class="results-container hidden">
+        <h3>Results for 12 Months</h3>
+        <table id="table-12m"></table>
+    </div>
+    <div id="results-24m" class="results-container hidden">
+        <h3>Results for 24 Months</h3>
+        <table id="table-24m"></table>
+    </div>
+    <div id="results-36m" class="results-container hidden">
+        <h3>Results for 36 Months</h3>
+        <table id="table-36m"></table>
+    </div>
+
+    <script src="secondpage.js"></script>
+</body>
+</html>

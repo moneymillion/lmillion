@@ -1,8 +1,6 @@
 /* Importing a font similar to Apple's San Francisco for a clean look */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-.hidden {
-    display: none;
-}
+
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -31,51 +29,105 @@ h1 {
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 5px;
+    text-align: center;
 }
 
-.input-field, .results-container {
+.input-field {
+    display: flex; /* Use flexbox to align label and input on the same line */
+    align-items: center; /* Align items vertically */
     margin: 10px 0;
 }
 
 label {
-    width: 240px;
+    flex-shrink: 0; /* Prevent label from shrinking */
+    width: 260px; /* Increase width to prevent wrapping, adjust as needed */
     margin-right: 10px;
+    text-align: right; /* Align text of label to the right */
 }
 
 input[type=number], button {
-    width: calc(100% - 250px);
+    flex-grow: 1; /* Allow input/button to take up remaining space */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin-left: auto; /* Aligns input/button to the right */
 }
 
 button {
-    width: 100%;
-    padding: 15px 20px;
-    background-color: #007aff;
-    color: white;
-    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
     cursor: pointer;
-    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-weight: 600;
-    margin-top: 20px;
+    border-radius: 20px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+    border: 1px solid transparent; /* Default border to transparent */
+    outline: none; /* Remove outline */
+    margin: 5px;
+    width: auto;
 }
 
-button:hover {
-    background-color: #005ecb;
+/* Primary Button Styling */
+button.primary {
+    background-color: #007aff; /* Blue background */
+    color: white; /* White text */
 }
 
-.results-container {
-    max-width: 800px;
-    margin: 20px auto;
+button.primary:hover {
+    background-color: #005ecb; /* Darker blue on hover */
 }
 
-.results-section {
+/* Secondary Button Styling */
+button.secondary {
+    background-color: #f5f5f7; /* Light grey background */
+    color: #1d1d1f; /* Dark text */
+    border-color: #d2d2d7; /* Light grey border */
+}
+
+button.secondary:hover {
+    background-color: #e5e5ea; /* Slightly darker grey on hover */
+}
+
+button.greyed-out {
+    background-color: #cccccc; /* Grey background */
+    color: #666666; /* Darker grey text */
+    cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+}
+
+.results-container, .supplement-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack children vertically */
+    margin: 20px auto; /* Center the container */
+    max-width: 800px; /* Adjust or remove max-width as needed */
+}
+
+.results-section, .supplement-container {
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 5px;
     margin-bottom: 20px;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.supplement-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.supplement-buttons button {
+    padding: 5px 10px;
 }
 
 .hidden {
@@ -86,6 +138,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    margin-left: auto; /* Center the table */
+    margin-right: auto; /* Center the table */
 }
 
 th, td {
