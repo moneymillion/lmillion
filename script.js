@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Restoring button states from sessionStorage
     ['12m', '24m', '36m'].forEach(term => {
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showTableResult(parseInt(term));
         }
     });
-
+    
     document.getElementById('input-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -16,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxCompound = parseFloat(document.getElementById('max-compound').value);
         const minCompound = parseFloat(document.getElementById('min-compound').value);
         const startingBalance = parseFloat(document.getElementById('starting-balance').value);
+        
+        // Store inputs in localStorage
+        localStorage.setItem('maxCompound', maxCompound);
+        localStorage.setItem('minCompound', minCompound);
+        localStorage.setItem('startingBalance', startingBalance);
         
         // Check if inputs have changed
         const inputsChanged = checkInputsChanged(maxCompound, minCompound, startingBalance);
@@ -25,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Setup duration buttons with proper calculation and display logic
         setupDurationButtons(minCompound, maxCompound, startingBalance);
-
+        
         // Refresh the table and ungrey all buttons if inputs changed
         if (inputsChanged) {
             hideAllResultTables();
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const btn = document.getElementById(`btn-${term}`);
             btn.onclick = () => {
                 hideAllResultTables();
-
+                
                 if (!btn.classList.contains('greyed-out')) {
                     calculateAndDisplayResults(parseInt(term), minCompound, maxCompound, startingBalance);
                     // Grey out the button and save the state
@@ -55,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function calculateAndDisplayResults(months, minCompound, maxCompound, startingBalance) {
         const table = document.getElementById(`table-${months}m`);
         table.innerHTML = ''; // Clear previous content
-
+        
         // Create table headers
         let headerRow = table.insertRow(0);
         ['Month', 'Starting Balance', 'Compound Percentage', 'Interest', 'Ending Balance'].forEach(header => {

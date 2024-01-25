@@ -1,4 +1,21 @@
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve stored values from localStorage
+    const maxCompoundStored = localStorage.getItem('maxCompound');
+    const minCompoundStored = localStorage.getItem('minCompound');
+    const startingBalanceStored = localStorage.getItem('startingBalance');
+
+    // Auto-fill the form if values are present in localStorage
+    if (maxCompoundStored !== null && minCompoundStored !== null && startingBalanceStored !== null) {
+        document.getElementById('max-compound').value = maxCompoundStored;
+        document.getElementById('min-compound').value = minCompoundStored;
+        document.getElementById('starting-balance').value = startingBalanceStored;
+    } else {
+        // If values are not present, prompt the user to fill them on the first page
+        alert('Please provide the required inputs on the first page.');
+        window.location.href = 'index.html'; // Redirect to the 1st page
+    }
+
     document.getElementById('input-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -33,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Create table headers
         let headerRow = table.insertRow(0);
-        ['Month', 'Starting Balance', 'Compound Percentage', 'Interest', 'Ending Balance'].forEach(header => {
+        ['Month', 'Starting Balance', 'Compound Percentage', 'Interest', 'Supplement Amount', 'Ending Balance'].forEach(header => {
             let th = document.createElement('th');
             th.innerText = header;
             headerRow.appendChild(th);
@@ -49,15 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
             currentBalance += interest;
             totalInterest += interest;
 
-            // Add supplement amount to the ending balance
-            currentBalance += supplementAmount;
+            let displayedSupplementAmount = month > 1 ? supplementAmount : 0;  // 0 for the first month, actual amount for subsequent months
+            currentBalance += displayedSupplementAmount;  // Add supplement amount to the current balance
 
             let row = table.insertRow(-1);
             row.insertCell(0).innerText = month;
             row.insertCell(1).innerText = startingBalanceForMonth.toFixed(2);
             row.insertCell(2).innerText = compoundPercentage.toFixed(2);
             row.insertCell(3).innerText = interest.toFixed(2);
-            row.insertCell(4).innerText = currentBalance.toFixed(2);
+            row.insertCell(4).innerText = displayedSupplementAmount.toFixed(2);  // Display supplement amount in the new column
+            row.insertCell(5).innerText = currentBalance.toFixed(2);
         }
 
         // Add a row for the final ending balance
@@ -66,15 +84,17 @@ document.addEventListener('DOMContentLoaded', function() {
         endingBalanceRow.insertCell(1).innerText = '';
         endingBalanceRow.insertCell(2).innerText = '';
         endingBalanceRow.insertCell(3).innerText = '';
-        endingBalanceRow.insertCell(4).innerText = currentBalance.toFixed(2);
+        endingBalanceRow.insertCell(4).innerText = '';
+        endingBalanceRow.insertCell(5).innerText = currentBalance.toFixed(2);
 
         let totalRow = table.insertRow(-1);
         totalRow.insertCell(0).innerText = 'Total Interest';
         totalRow.insertCell(1).innerText = '';
         totalRow.insertCell(2).innerText = '';
         totalRow.insertCell(3).innerText = '';
-        totalRow.insertCell(4).innerText = totalInterest.toFixed(2);
-        
+        totalRow.insertCell(4).innerText = '';
+        totalRow.insertCell(5).innerText = totalInterest.toFixed(2);
+
         // Ensure the result section for the selected term is visible
         document.getElementById(`results-${months}m`).classList.remove('hidden');
     }
