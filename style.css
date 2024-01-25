@@ -1,3 +1,4 @@
+
 /* Importing a font similar to Apple's San Francisco for a clean look */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
@@ -51,6 +52,7 @@ input[type=number], button {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-left: auto; /* Aligns input/button to the right */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 button {
@@ -150,4 +152,26 @@ th, td {
 
 h3 {
     margin-top: 0;
+}
+
+
+input[type=number], button {
+    width: calc(100% - 12px); /* Adjust width to prevent overflow */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+    .input-field label {
+        width: auto; /* Allow label width to be more flexible on smaller screens */
+        text-align: left; /* Align text of label to the left for better readability */
+        margin-bottom: 5px; /* Add space between label and input field */
+    }
+
+    .input-field {
+        flex-direction: column; /* Stack label and input on top of each other */
+    }
+
+    input[type=number], button {
+        width: 100%; /* Full width for smaller screens */
+    }
 }
