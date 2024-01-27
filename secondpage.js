@@ -150,8 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //Calculate Million
     function calculateAndDisplayResultsUntilMillion(minCompound, maxCompound, startingBalance, supplementAmount) {
-        const table = document.getElementById('table-36m');
-        table.innerHTML = ''; // Clear previous content
+      const table = document.getElementById('table-36m');
+          table.innerHTML = ''; // Clear previous content
+
+          // Change the title of the results section
+          const resultsContainer = document.getElementById('results-36m');
+          resultsContainer.querySelector('h3').innerText = 'Lead to Million Result';
 
         // Create table headers
         let headerRow = table.insertRow(0);
@@ -203,9 +207,24 @@ document.addEventListener('DOMContentLoaded', function() {
         totalRow.insertCell(4).innerText = '';
         totalRow.insertCell(5).innerText = totalInterest.toFixed(2);
 
-        // Ensure the result section for the selected term is visible
-        document.getElementById('results-36m').classList.remove('hidden');
-    }
+        let totalMonths = month; // Total months calculated from the loop
+            let yearsToMillionaire = Math.floor(totalMonths / 12); // Calculate the years
+            let remainingMonths = totalMonths % 12; // Calculate the remaining months
+
+            // Check if additional text is already added, if not, add it
+            let additionalText = document.getElementById('results-36m').querySelector('.millionaire-text');
+            if (!additionalText) {
+                additionalText = document.createElement('p');
+                additionalText.className = 'millionaire-text';
+                document.getElementById('results-36m').appendChild(additionalText);
+            }
+            document.getElementById('millionaire-text').innerText = `Millionaire by ${yearsToMillionaire} years, ${remainingMonths} months`;
+
+            additionalText.textContent = `Become millionaire before ${yearsToMillionaire} years, ${remainingMonths} months`;
+
+            // Ensure the result section is visible
+            document.getElementById('results-36m').classList.remove('hidden');
+        }
 
 
     // Handle the supplement question responses
