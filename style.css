@@ -1,4 +1,3 @@
-
 /* Importing a font similar to Apple's San Francisco for a clean look */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
@@ -23,7 +22,7 @@ h1 {
     margin: 0;
 }
 
-#input-section, #duration-selection {
+#input-section, #duration-selection, #graph-section {
     max-width: 800px;
     margin: 30px auto;
     background-color: #fff;
@@ -33,26 +32,38 @@ h1 {
     text-align: center;
 }
 
+#graph-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
 .input-field {
-    display: flex; /* Use flexbox to align label and input on the same line */
-    align-items: center; /* Align items vertically */
+    display: flex;
+    align-items: center;
     margin: 10px 0;
 }
 
 label {
-    flex-shrink: 0; /* Prevent label from shrinking */
-    width: 260px; /* Increase width to prevent wrapping, adjust as needed */
+    flex-shrink: 0;
+    width: 260px;
     margin-right: 10px;
-    text-align: right; /* Align text of label to the right */
+    text-align: right;
 }
 
 input[type=number], button {
-    flex-grow: 1; /* Allow input/button to take up remaining space */
+    flex-grow: 1;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-left: auto; /* Aligns input/button to the right */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-left: auto;
+    box-sizing: border-box;
 }
 
 button {
@@ -63,48 +74,46 @@ button {
     text-decoration: none;
     display: inline-block;
     font-weight: 600;
-    border-radius: 20px; /* Rounded corners */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
-    border: 1px solid transparent; /* Default border to transparent */
-    outline: none; /* Remove outline */
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    border: 1px solid transparent;
+    outline: none;
     margin: 5px;
     width: auto;
 }
 
-/* Primary Button Styling */
 button.primary {
-    background-color: #007aff; /* Blue background */
-    color: white; /* White text */
+    background-color: #007aff;
+    color: white;
 }
 
 button.primary:hover {
-    background-color: #005ecb; /* Darker blue on hover */
+    background-color: #005ecb;
 }
 
-/* Secondary Button Styling */
 button.secondary {
-    background-color: #f5f5f7; /* Light grey background */
-    color: #1d1d1f; /* Dark text */
-    border-color: #d2d2d7; /* Light grey border */
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    border-color: #d2d2d7;
 }
 
 button.secondary:hover {
-    background-color: #e5e5ea; /* Slightly darker grey on hover */
+    background-color: #e5e5ea;
 }
 
 button.greyed-out {
-    background-color: #cccccc; /* Grey background */
-    color: #666666; /* Darker grey text */
-    cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
 }
 
 .results-container, .supplement-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    flex-direction: column; /* Stack children vertically */
-    margin: 20px auto; /* Center the container */
-    max-width: 800px; /* Adjust or remove max-width as needed */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    max-width: 800px;
 }
 
 .results-section, .supplement-container {
@@ -122,14 +131,22 @@ button.greyed-out {
     flex-direction: column;
 }
 
-.supplement-buttons {
+.supplement-container {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    flex-wrap: nowrap; /* Prevents wrapping to a new line */
+    width: 100%; /* Use the full width available */
 }
 
-.supplement-buttons button {
-    padding: 5px 10px;
+.supplement-container span {
+    margin-right: 10px; /* Space between question and buttons */
+}
+
+/* Optional: Adjust button spacing */
+button.secondary {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .hidden {
@@ -140,8 +157,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    margin-left: auto; /* Center the table */
-    margin-right: auto; /* Center the table */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th, td {
@@ -154,24 +171,22 @@ h3 {
     margin-top: 0;
 }
 
-
 input[type=number], button {
-    width: calc(100% - 12px); /* Adjust width to prevent overflow */
+    width: calc(100% - 12px);
 }
 
-/* Media Query for smaller screens */
 @media (max-width: 600px) {
     .input-field label {
-        width: auto; /* Allow label width to be more flexible on smaller screens */
-        text-align: left; /* Align text of label to the left for better readability */
-        margin-bottom: 5px; /* Add space between label and input field */
+        width: auto;
+        text-align: left;
+        margin-bottom: 5px;
     }
 
     .input-field {
-        flex-direction: column; /* Stack label and input on top of each other */
+        flex-direction: column;
     }
 
     input[type=number], button {
-        width: 100%; /* Full width for smaller screens */
+        width: 100%;
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Planning Tool</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -27,12 +28,31 @@
             <button type="submit" class="primary">Calculate</button>
         </form>
     </section>
+
     <section id="duration-selection" class="hidden">
         <button id="btn-12m" class="duration-btn secondary">12 Months</button>
         <button id="btn-24m" class="duration-btn secondary">24 Months</button>
         <button id="btn-36m" class="duration-btn secondary">36 Months</button>
     </section>
 
+    <!-- Graph Section -->
+    <section id="graph-section" class="hidden">
+        <h2>Financial Growth by Month</h2>
+        <div id="graph-container">
+            <canvas id="myChart"></canvas>
+        </div>
+    </section>
+
+    <section id="supplement-question" class="hidden center-content">
+        <div class="supplement-container">
+            <span>Add booster amount every month?</span>
+            <button id="supplement-yes" class="secondary">Yes</button>
+            <button id="supplement-no" class="secondary">No</button>
+        </div>
+    </section>
+
+
+    <!-- Result Container section -->
     <div class="results-container">
         <section id="results-12m" class="results-section hidden">
             <h3>12 Months Results</h3>
@@ -47,16 +67,7 @@
             <table id="table-36m"></table>
         </section>
     </div>
-    <!-- Centered supplement question section -->
-    <section id="supplement-question" class="hidden center-content">
-        <div class="supplement-container">
-            <p>Do you want to add booster amount every month? </p>
-            <div class="supplement-buttons">
-                <button id="supplement-yes" class="secondary">Yes</button>
-                <button id="supplement-no" class="secondary">No</button>
-            </div>
-        </div>
-    </section>
+
 
     <script src="script.js"></script>
 </body>

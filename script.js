@@ -1,5 +1,28 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Chart initialization
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: [], // Empty labels array
+          datasets: [{
+              label: 'Ending Balance',
+              data: [], // Empty data array
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          },
+          responsive: true,
+      }
+    });
     // Restoring button states from sessionStorage
     ['12m', '24m', '36m'].forEach(term => {
         if (sessionStorage.getItem(`btn-${term}-clicked`) === 'true') {
@@ -9,29 +32,29 @@ document.addEventListener('DOMContentLoaded', function() {
             showTableResult(parseInt(term));
         }
     });
-    
+
     document.getElementById('input-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         // Read user inputs
         const maxCompound = parseFloat(document.getElementById('max-compound').value);
         const minCompound = parseFloat(document.getElementById('min-compound').value);
         const startingBalance = parseFloat(document.getElementById('starting-balance').value);
-        
+
         // Store inputs in localStorage
         localStorage.setItem('maxCompound', maxCompound);
         localStorage.setItem('minCompound', minCompound);
         localStorage.setItem('startingBalance', startingBalance);
-        
+
         // Check if inputs have changed
         const inputsChanged = checkInputsChanged(maxCompound, minCompound, startingBalance);
 
         // Show the duration selection buttons
         document.getElementById('duration-selection').classList.remove('hidden');
-        
+
         // Setup duration buttons with proper calculation and display logic
         setupDurationButtons(minCompound, maxCompound, startingBalance);
-        
+
         // Refresh the table and ungrey all buttons if inputs changed
         if (inputsChanged) {
             hideAllResultTables();
@@ -44,24 +67,28 @@ document.addEventListener('DOMContentLoaded', function() {
             const btn = document.getElementById(`btn-${term}`);
             btn.onclick = () => {
                 hideAllResultTables();
-                
+
                 if (!btn.classList.contains('greyed-out')) {
+                    // Calculate and display results for the first time
                     calculateAndDisplayResults(parseInt(term), minCompound, maxCompound, startingBalance);
                     // Grey out the button and save the state
                     btn.classList.add('greyed-out');
                     sessionStorage.setItem(`btn-${term}-clicked`, 'true');
                 } else {
-                    // If the button is greyed out, show its table result
-                    showTableResult(parseInt(term));
+                    // For greyed-out button, recalculate and display results (this will update the graph and table)
+                    calculateAndDisplayResults(parseInt(term), minCompound, maxCompound, startingBalance);
                 }
             };
         });
     }
 
+
+
     function calculateAndDisplayResults(months, minCompound, maxCompound, startingBalance) {
-        const table = document.getElementById(`table-${months}m`);
-        table.innerHTML = ''; // Clear previous content
-        
+           const table = document.getElementById(`table-${months}m`);
+           table.innerHTML = ''; // Clear previous content
+
+
         // Create table headers
         let headerRow = table.insertRow(0);
         ['Month', 'Starting Balance', 'Compound Percentage', 'Interest', 'Ending Balance'].forEach(header => {
@@ -70,9 +97,15 @@ document.addEventListener('DOMContentLoaded', function() {
             headerRow.appendChild(th);
         });
 
+        // Show the chart section first
+        document.getElementById('graph-section').classList.remove('hidden');
+
+
         let currentBalance = startingBalance;
         let totalInterest = 0;
-        
+        let chartLabels = [];
+        let chartData = [];
+
         for (let month = 1; month <= months; month++) {
             let startingBalanceForMonth = currentBalance;
             let compoundPercentage = (month === 1 ? minCompound : Math.random() * (maxCompound - minCompound) + minCompound);
@@ -86,7 +119,21 @@ document.addEventListener('DOMContentLoaded', function() {
             row.insertCell(2).innerText = compoundPercentage.toFixed(2);
             row.insertCell(3).innerText = interest.toFixed(2);
             row.insertCell(4).innerText = currentBalance.toFixed(2);
+
+            // Add month and current balance to chart data
+            chartLabels.push(`Month ${month}`);
+            chartData.push(currentBalance.toFixed(2));
         }
+
+        // Update the chart label with the final ending balance
+            let finalEndingBalance = currentBalance.toFixed(2);
+            myChart.data.datasets[0].label = `Ending Balance = $${finalEndingBalance}`;
+
+            // Update the chart
+            myChart.data.labels = chartLabels;
+            myChart.data.datasets[0].data = chartData;
+            myChart.update();
+
 
         // Add a row for the final ending balance
         let endingBalanceRow = table.insertRow(-1);
@@ -102,19 +149,20 @@ document.addEventListener('DOMContentLoaded', function() {
         totalRow.insertCell(2).innerText = '';
         totalRow.insertCell(3).innerText = '';
         totalRow.insertCell(4).innerText = totalInterest.toFixed(2);
-        
-        // Ensure the result section for the selected term is visible
-        document.getElementById(`results-${months}m`).classList.remove('hidden');
-        
-        // Show the supplement question section after the table
+
         document.getElementById('supplement-question').classList.remove('hidden');
+
+        // Finally, show the table with results
+        document.getElementById(`results-${months}m`).classList.remove('hidden');
     }
 
     function hideAllResultTables() {
-        ['12m', '24m', '36m'].forEach(term => {
-            document.getElementById(`results-${term}`).classList.add('hidden');
-        });
-    }
+    document.getElementById('graph-section').classList.add('hidden');
+    document.getElementById('supplement-question').classList.add('hidden');
+    ['12m', '24m', '36m'].forEach(term => {
+        document.getElementById(`results-${term}`).classList.add('hidden');
+    });
+}
 
     function showTableResult(months) {
         // Show the result section for the selected term
