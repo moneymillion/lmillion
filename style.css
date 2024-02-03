@@ -53,15 +53,15 @@ canvas {
 label {
     flex-shrink: 0;
     width: 260px;
-    margin-right: 10px;
-    text-align: right;
+    margin: 10px;
+    text-align: center;
 }
 
 input[type=number], button {
     flex-grow: 1;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 3px solid #000;
+    border-radius: 15px;
     margin-left: auto;
     box-sizing: border-box;
 }
@@ -128,15 +128,17 @@ button.greyed-out {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+     flex-direction: column;
+     align-items: flex-start;
 }
 
 .supplement-container {
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-block: 15px;
     flex-wrap: nowrap; /* Prevents wrapping to a new line */
-    width: 100%; /* Use the full width available */
+    width: 90%; /* Use the full width available */
 }
 
 .supplement-container span {
@@ -164,7 +166,7 @@ table {
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 h3 {
@@ -177,20 +179,22 @@ input[type=number], button {
 
 @media (max-width: 600px) {
     .input-field label {
-        display: inline-block;
-        width: 100%; /* Full width for smaller screens */
+        display: block;
+        width: 100%;
         margin-bottom: 5px;
-        text-align: left;
+        text-align: center;
     }
 
     .input-field input[type="number"], .input-field button, #annualProfit {
-        width: 100%; /* Full width for input fields and buttons */
-        margin: 5px 0; /* Space above and below each input field */
-    }
-}
-
-
-    input[type=number], button {
         width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+
+    /* Ensure the input fields do not have flex properties on small screens */
+    .input-field {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
