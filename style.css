@@ -183,9 +183,9 @@ input[type=number], button {
         text-align: left;
     }
 
-    .input-field input[type="number"], .input-field button {
-        width: 100%; /* Full width for smaller screens */
-        margin: 5px 0;
+    .input-field input[type="number"], .input-field button, #annualProfit {
+        width: 100%; /* Full width for input fields and buttons */
+        margin: 5px 0; /* Space above and below each input field */
     }
 }
 
