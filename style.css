@@ -178,16 +178,17 @@ input[type=number], button {
 @media (max-width: 600px) {
     .input-field label {
         display: inline-block;
-        width: 220px; /* Adjust this width as needed */
-        text-align: right;
-        margin-right: 10px;
+        width: 100%; /* Full width for smaller screens */
+        margin-bottom: 5px;
+        text-align: left;
     }
 
-    .input-field {
-      
-        width: calc(100% - 230px); /* Adjust based on label width and margin */
-
+    .input-field input[type="number"], .input-field button {
+        width: 100%; /* Full width for smaller screens */
+        margin: 5px 0;
     }
+}
+
 
     input[type=number], button {
         width: 100%;
