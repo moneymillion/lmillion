@@ -1,28 +1,66 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Chart initialization
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: [], // Empty labels array
-          datasets: [{
-              label: 'Ending Balance',
-              data: [], // Empty data array
-              fill: false,
-              borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          },
-          responsive: true,
+  // ... existing code within the DOMContentLoaded block ...
+
+  document.getElementById('annualProfit').addEventListener('input', function() {
+      const annualAPR = parseFloat(this.value);
+
+      // Check if annualAPR is a number and greater than 0
+      if (!isNaN(annualAPR) && annualAPR > 0) {
+          const monthlyRate = (Math.pow(1 + annualAPR / 100, 1/12) - 1) * 100;
+
+          // Populate the min and max compound fields with the calculated monthly rate
+          document.getElementById('min-compound').value = monthlyRate.toFixed(2);
+          document.getElementById('max-compound').value = monthlyRate.toFixed(2);
+      } else {
+          // Clear the fields if annualAPR is not valid
+          document.getElementById('min-compound').value = '';
+          document.getElementById('max-compound').value = '';
       }
-    });
+  });
+  // ... remaining code within the DOMContentLoaded block ...
+
+  // Chart initialization
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [], // Empty labels array
+      datasets: [{
+        label: 'Ending Balance',
+        data: [], // Empty data array
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      responsive: true,
+      tooltips: {
+        enabled: true,
+        mode: 'index',
+        intersect: false,
+        callbacks: {
+          label: function(tooltipItem, data) {
+            console.log("Tooltip Item:", tooltipItem, "Data:", data);
+            let value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+            return `$${value}`;
+          }
+        }
+      },
+      title: {
+        display: true,
+        text: '' // Placeholder, to be dynamically updated
+      }
+    }
+  });
+
+
     // Restoring button states from sessionStorage
     ['12m', '24m', '36m'].forEach(term => {
         if (sessionStorage.getItem(`btn-${term}-clicked`) === 'true') {
@@ -126,12 +164,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Update the chart label with the final ending balance
-            let finalEndingBalance = currentBalance.toFixed(2);
-            myChart.data.datasets[0].label = `Ending Balance = $${finalEndingBalance}`;
+        let finalEndingBalance = currentBalance.toFixed(2);
+
 
             // Update the chart
             myChart.data.labels = chartLabels;
             myChart.data.datasets[0].data = chartData;
+            myChart.data.datasets[0].label = `Ending Balance = $${finalEndingBalance}`;
             myChart.update();
 
 

@@ -177,13 +177,16 @@ input[type=number], button {
 
 @media (max-width: 600px) {
     .input-field label {
-        width: auto;
-        text-align: left;
-        margin-bottom: 5px;
+        display: inline-block;
+        width: 220px; /* Adjust this width as needed */
+        text-align: right;
+        margin-right: 10px;
     }
 
     .input-field {
-        flex-direction: column;
+      
+        width: calc(100% - 230px); /* Adjust based on label width and margin */
+
     }
 
     input[type=number], button {
