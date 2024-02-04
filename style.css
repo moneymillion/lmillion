@@ -5,21 +5,23 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-color: #f7f7f7;
-    color: #333;
+    background-color: #313131;
+    color: #000000;
+
 }
 
 header {
-    background-color: #fff;
+    background-color: ##eae8e8;;
+    color: #ffffff;
     text-align: center;
-    padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding-top: 20px;
+    box-shadow: 1 2px 4px rgba(0,0,0,0.1);
 }
 
 h1 {
     font-weight: 600;
     margin: 0;
+    padding: 1px;
 }
 
 #input-section, #duration-selection, #graph-section {
@@ -27,9 +29,10 @@ h1 {
     margin: 30px auto;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 11%);
+    border-radius: 25px;
     text-align: center;
+
 }
 
 #graph-container {
@@ -37,6 +40,7 @@ h1 {
     max-width: 800px;
     margin: 20px auto;
     box-sizing: border-box;
+
 }
 
 canvas {
@@ -48,6 +52,7 @@ canvas {
     display: flex;
     align-items: center;
     margin: 10px 0;
+
 }
 
 label {
@@ -55,20 +60,27 @@ label {
     width: 260px;
     margin: 10px;
     text-align: center;
+        font-size: 1.2rem;
+
+
 }
 
 input[type=number], button {
     flex-grow: 1;
     padding: 10px;
-    border: 3px solid #000;
+    border: 3px solid #3d3e49;
     border-radius: 15px;
     margin-left: auto;
     box-sizing: border-box;
+    text-align: center;
+    font-size: 1.2rem;
+
+
 }
 
 button {
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -76,15 +88,15 @@ button {
     font-weight: 600;
     border-radius: 20px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    border: 1px solid transparent;
+    border: 2px solid #2b2b2b;
     outline: none;
-    margin: 5px;
+    margin: 3px;
     width: auto;
 }
 
 button.primary {
-    background-color: #007aff;
-    color: white;
+    background-color: #35719f;
+    color: #fffefe;
 }
 
 button.primary:hover {
@@ -92,18 +104,18 @@ button.primary:hover {
 }
 
 button.secondary {
-    background-color: #f5f5f7;
-    color: #1d1d1f;
-    border-color: #d2d2d7;
+    background-color: #ded891;
+    color: #000000;
+    border-color: #0000ff;
 }
 
 button.secondary:hover {
-    background-color: #e5e5ea;
+    background-color: #8f83ff;
 }
 
 button.greyed-out {
-    background-color: #cccccc;
-    color: #666666;
+    background-color: #8e92ff;
+    color: #223791;
     cursor: not-allowed;
 }
 
@@ -114,67 +126,82 @@ button.greyed-out {
     flex-direction: column;
     margin: 20px auto;
     max-width: 800px;
+    background-color: #fff;
+    border-radius: 40px;
+
 }
 
 .results-section, .supplement-container {
     background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 3 2px 4px rgb(255 255 255 / 10%);
+    border-radius: 35px;
+    margin-bottom: 10px;
+
 }
 
 .center-content {
     display: flex;
     justify-content: center;
     align-items: center;
-     flex-direction: column;
-     align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+
+
 }
 
 .supplement-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-block: 15px;
     flex-wrap: nowrap; /* Prevents wrapping to a new line */
-    width: 90%; /* Use the full width available */
+    width: 100%; /* Use the full width available */
 }
 
 .supplement-container span {
-    margin-right: 10px; /* Space between question and buttons */
+    margin: 20px; /* Space between question and buttons */
 }
 
 /* Optional: Adjust button spacing */
 button.secondary {
     margin-left: 5px;
     margin-right: 5px;
+
 }
 
 .hidden {
     display: none;
+
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    margin-left: auto;
+    margin-left: 100;
     margin-right: auto;
+    background-color: #fff;
+    font-size: 1.3rem;
+
+
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
     padding: 8px;
     text-align: center;
+
 }
 
 h3 {
-    margin-top: 0;
+    text-align: center;
+    font-size: 1.2rem;
+
 }
 
 input[type=number], button {
     width: calc(100% - 12px);
+
 }
 
 @media (max-width: 600px) {

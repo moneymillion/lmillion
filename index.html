@@ -14,16 +14,16 @@
     <section id="input-section">
         <form id="input-form">
             <div class="input-field">
-                <label for="starting-balance" style="display: inline-block; width: 220px; text-align: right;">Starting Balance:</label>
-                <input type="number" id="starting-balance" name="starting-balance" step="any" required>
+                <label for="starting-balance">Starting Balance ($)</label>
+                <input type="number" id="starting-balance" name="starting-balance" placeholder="Enter the initial Starting balance of 1st Month" step="any" required>
             </div>
             <div class="input-field">
-                <label for="minCompound" style="display: inline-block; width: 220px; text-align: right;">Min. Profit or Saving (%) by Month:</label>
-                <input type="number" id="min-compound" name="min-compound" step="any" required>
+                <label for="min-compound">Min. Monthly APR(%)</label>
+                <input type="number" id="min-compound" name="min-compound" placeholder="Enter Minimum Monthly Profit or Savings (%)"  step="any" required>
             </div>
             <div class="input-field">
-                <label for="max-compound" style="display: inline-block; width: 220px; text-align: right;">Max. Profit or Saving (%) by Month:</label>
-                <input type="number" id="max-compound" name="max-compound" step="any" required>
+                <label for="max-compound">Max. Monthly APR (%)</label>
+                <input type="number" id="max-compound" name="max-compound" placeholder="Enter Maximum Monthly Profit or Savings (%)"  step="any" required>
             </div>
 
             <p>OR, Check by Annual Profit or Interest APR (%)</p>
@@ -41,21 +41,26 @@
         <button id="btn-36m" class="duration-btn secondary">36 Months</button>
     </section>
 
+
+
+
+
     <!-- Graph Section -->
     <section id="graph-section" class="hidden">
         <h2>Financial Growth by Month</h2>
         <div id="graph-container">
             <canvas id="myChart"></canvas>
         </div>
+        <section id="supplement-question" class="hidden center-content">
+        <div class="supplement-container">
+            <span>Contribute additional ($Amount) every month to see the timeframe of reaching Million</span>
+            <button id="supplement-yes" class="secondary">Proceed to calculating (#Years) Required reaching Million</button>
+            <button id="supplement-no" class="secondary">Focus on First 3 Years only</button>
+        </div>
+            </section>
     </section>
 
-    <section id="supplement-question" class="hidden center-content">
-        <div class="supplement-container">
-            <span>Add booster amount every month?</span>
-            <button id="supplement-yes" class="secondary">Yes</button>
-            <button id="supplement-no" class="secondary">No</button>
-        </div>
-    </section>
+
 
 
     <!-- Result Container section -->
