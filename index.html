@@ -12,11 +12,15 @@
         <h1>Lead to Million Calculator</h1>
     </header>
     <section id="input-section">
+      <div class="startingb-box">
         <form id="input-form">
             <div class="input-field">
                 <label for="starting-balance">Starting Balance ($)</label>
                 <input type="number" id="starting-balance" name="starting-balance" placeholder="Enter the initial Starting balance of 1st Month" step="any" required>
             </div>
+          </div>
+
+            <div class="apr-box">
             <div class="input-field">
                 <label for="min-compound">Min. Monthly APR(%)</label>
                 <input type="number" id="min-compound" name="min-compound" placeholder="Enter Minimum Monthly Profit or Savings (%)"  step="any" required>
@@ -25,12 +29,16 @@
                 <label for="max-compound">Max. Monthly APR (%)</label>
                 <input type="number" id="max-compound" name="max-compound" placeholder="Enter Maximum Monthly Profit or Savings (%)"  step="any" required>
             </div>
+            </div>
 
             <p>OR, Check by Annual Profit or Interest APR (%)</p>
+
+            <div class="yr-apr-box">
             <div class="input-field">
                 <label for="annualProfit">Annual Interest or Profit APR (%):</label>
                 <input type="number" id="annualProfit" name="annualProfit" placeholder="Enter Annual Profit/Interest APR (%)" step="any">
             </div>
+           </div>
             <button type="submit" class="primary">Calculate</button>
         </form>
     </section>
