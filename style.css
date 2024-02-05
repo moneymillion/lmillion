@@ -24,33 +24,6 @@ h1 {
     padding: 1px;
 }
 
-.apr-box{
-    background-color: #303030; /* Replace with the background color of the calculate button */
-    padding: 5px;
-    border-radius: 25px; /* Optional, for rounded corners */
-    color: white; /* Assuming the text color of the button is white */
-    text-align: center;
-    /* Add other styles like margins or width as per your layout needs */
-}
-
-.yr-apr-box {
-    background-color: #359c1f; /* Replace with the background color of the calculate button */
-    border-radius: 25px; /* Optional, for rounded corners */
-    color: white; /* Assuming the text color of the button is white */
-    text-align: center;
-    margin: 20px auto;
-
-    /* Add other styles like margins or width as per your layout needs */
-}
-
-.startingb-box {
-    background: #a98004;
-    border-radius: 17px; /* Optional, for rounded corners */
-    color: #ffffff; /* Assuming the text color of the button is white */
-    text-align: center;
-    margin: 20px auto;
-}
-
 #input-section, #duration-selection, #graph-section {
     max-width: 800px;
     margin: 30px auto;
@@ -87,7 +60,7 @@ label {
     width: 260px;
     margin: 10px;
     text-align: center;
-    font-size: 1.2rem;
+        font-size: 1.2rem;
 
 
 }
@@ -122,35 +95,28 @@ button {
 }
 
 button.primary {
-    background-color: #2f4c7f;
-    margin: 3px;
-    width: 40%;
+    background-color: #35719f;
     color: #fffefe;
 }
 
 button.primary:hover {
-    background-color: #c5a624;
-    color: black;
+    background-color: #005ecb;
 }
 
 button.secondary {
     background-color: #ded891;
     color: #000000;
     border-color: #0000ff;
-    width:60%;
 }
 
 button.secondary:hover {
-    background-color: #5ea9c1;
-    color: white;
-    width:50%;
+    background-color: #8f83ff;
 }
 
 button.greyed-out {
-    background-color: #5157ff;
-    color: #ffffff;
+    background-color: #8e92ff;
+    color: #223791;
     cursor: not-allowed;
-    width:50%;
 }
 
 .results-container, .supplement-container {
