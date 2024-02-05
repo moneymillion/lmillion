@@ -116,6 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     // For greyed-out button, recalculate and display results (this will update the graph and table)
                     calculateAndDisplayResults(parseInt(term), minCompound, maxCompound, startingBalance);
                 }
+
+                document.getElementById('graph-section').scrollIntoView({ behavior: 'smooth' });
+
             };
         });
     }
@@ -167,11 +170,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let finalEndingBalance = currentBalance.toFixed(2);
 
 
-            // Update the chart
-            myChart.data.labels = chartLabels;
-            myChart.data.datasets[0].data = chartData;
-            myChart.data.datasets[0].label = `Ending Balance = $${finalEndingBalance}`;
-            myChart.update();
+        // Update the chart
+        myChart.data.labels = chartLabels;
+        myChart.data.datasets[0].data = chartData;
+        myChart.data.datasets[0].label = `Ending Balance = $${finalEndingBalance}`;
+        myChart.update();
 
 
         // Add a row for the final ending balance

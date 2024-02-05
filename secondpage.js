@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const minCompoundStored = localStorage.getItem('minCompound');
     const startingBalanceStored = localStorage.getItem('startingBalance');
 
+
+
     // Auto-fill the form if values are present in localStorage
     if (maxCompoundStored !== null && minCompoundStored !== null && startingBalanceStored !== null) {
         document.getElementById('max-compound').value = maxCompoundStored;
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 calculateAndDisplayResults(parseInt(term), minCompound, maxCompound, startingBalance, supplementAmount);
                 // Show the supplement question section
                 document.getElementById('supplement-question').classList.remove('hidden');
+
             };
         });
 
